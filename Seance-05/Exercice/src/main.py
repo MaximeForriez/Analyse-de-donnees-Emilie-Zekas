@@ -15,7 +15,7 @@ def ouvrirUnFichier(nom):
         contenu = pd.read_csv(fichier)
     return contenu
 
-donnees = pd.DataFrame(ouvrirUnFichier("Seance-05/Exercice/src/data/Echantillonnage-100-Echantillons.csv"))
+donnees = pd.DataFrame(ouvrirUnFichier("./data/Echantillonnage-100-Echantillons.csv"))
 
 moyennes = donnees.mean().round(0)
 print("\nMoyenne par sample opinion  :", moyennes)
@@ -61,8 +61,8 @@ print("Résultat sur le calcul d'un intervalle de confiance")
 #Comme à la séance précédente, l'ensemble des tests se trouve au lien : https://docs.scipy.org/doc/scipy/reference/stats.html
 print("Théorie de la décision")
 
-data1 = pd.read_csv('Seance-05/Exercice/src/data/Loi-normale-Test-1.csv', header=None)[0]
-data2 = pd.read_csv('Seance-05/Exercice/src/data/Loi-normale-Test-2.csv', header=None)[0]
+data1 = pd.read_csv('./data/Loi-normale-Test-1.csv', header=None)[0]
+data2 = pd.read_csv('./data/Loi-normale-Test-2.csv', header=None)[0]
 
 stat1,p1 = scipy.stats.shapiro(data1)
 stat2,p2 = scipy.stats.shapiro(data2)

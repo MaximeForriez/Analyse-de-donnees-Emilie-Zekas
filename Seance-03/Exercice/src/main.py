@@ -9,7 +9,7 @@ import os
 
 # Sources des données : production de M. Forriez, 2016-2023
 
-with open("Seance-02/Exercice/src/data/resultats-elections-presidentielles-2022-1er-tour.csv","r") as fichier:
+with open("./data/resultats-elections-presidentielles-2022-1er-tour.csv","r") as fichier:
     contenu = pd.read_csv(fichier)
 
 # Mettre dans un commentaire le numéro de la question
@@ -66,12 +66,12 @@ for col in quant_col:
     plt.title(f"Boîte à moustache de la colonne: {col}")
     plt.ylabel("Valeurs")
     
-    boxplot_image = os.path.join("Seance-03/Exercice/src/data", f"boxplot_{col}.png")
+    boxplot_image = os.path.join("./img/", f"boxplot_{col}.png")
     plt.savefig(boxplot_image)
     plt.close()
 
 # Question 6
-with open("Seance-03/Exercice/src/data/island-index.csv","r",encoding='utf-8') as fichier:
+with open("./data/island-index.csv","r",encoding='utf-8') as fichier:
     islands = pd.read_csv(fichier)
 
 #Question7

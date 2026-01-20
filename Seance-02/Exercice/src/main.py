@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Source des données : https://www.data.gouv.fr/datasets/election-presidentielle-des-10-et-24-avril-2022-resultats-definitifs-du-1er-tour/
-with open("Seance-02/Exercice/src/data/resultats-elections-presidentielles-2022-1er-tour.csv","r") as fichier:
+with open("./data/resultats-elections-presidentielles-2022-1er-tour.csv","r") as fichier:
     contenu = pd.read_csv(fichier)
 
 # Mettre dans un commentaire le numéro de la question
@@ -55,32 +55,32 @@ for index, row in departements.iterrows():
     plt.title(f"Département {code}: Inscrits vs Votants")
     plt.ylabel("Nombre")
     
-    image = os.path.join("Seance-02/Exercice/src/data", f"dept{code}_inscrits_votants.png")
+    image = os.path.join("./img/", f"dept{code}_inscrits_votants.png")
     plt.savefig(image)
     plt.close()
 
 # Question 8
 departements = contenu.groupby('Code du departement')[['Abstentions', 'Blancs','Nuls', 'Exprimés']].sum().reset_index() # Agrégation des données par département
 
-for index, row in departements.iterrows():
-    code = row['Code du departement']   
-    abstentions = row['Abstentions']
-    blancs=row['Blancs']
-    nuls=row['Nuls']
-    experimes = pd.to_numeric(row['Exprimés'], errors='coerce') #parceque certains valeurs sont des strings
+# for index, row in departements.iterrows():
+#     code = row['Code du departement']   
+#     abstentions = row['Abstentions']
+#     blancs=row['Blancs']
+#     nuls=row['Nuls']
+#     experimes = pd.to_numeric(row['Exprimés'], errors='coerce') #parceque certains valeurs sont des strings
   
-    data = [abstentions, blancs, nuls, experimes]
-    labels = ['Abstentions','Blancs','Nuls', 'Exprimés']
-    plt.figure(figsize=(7, 7))
-    plt.pie(data,labels=labels, 
-            autopct='%1.1f%%',
-            startangle=90) 
-    plt.title(f"Département {code}: Vote et Abstention")
-    plt.axis('equal')
+#     data = [abstentions, blancs, nuls, experimes]
+#     labels = ['Abstentions','Blancs','Nuls', 'Exprimés']
+#     plt.figure(figsize=(7, 7))
+#     plt.pie(data,labels=labels, 
+#             autopct='%1.1f%%',
+#             startangle=90) 
+#     plt.title(f"Département {code}: Vote et Abstention")
+#     plt.axis('equal')
     
-    image1 = os.path.join("Seance-02/Exercice/src/data", f"dept{code}_vote_et_abst.png")
-    plt.savefig(image1)
-    plt.close()
+#     image1 = os.path.join("./img/", f"dept{code}_vote_et_abst.png")
+#     plt.savefig(image1)
+#     plt.close()
 
 # Question 9
 inscrits_data = contenu['Inscrits'].loc[contenu['Inscrits'] > 0]
@@ -91,6 +91,6 @@ plt.xlabel("Nombre d'Inscrits (par bureau de vote)")
 plt.ylabel("Densité de Probabilité")
 plt.grid(axis='y', alpha=0.5)
 
-hist = os.path.join("Seance-02/Exercice/src/data", "hist.png")
+hist = os.path.join("./img/", "hist.png")
 plt.savefig(hist)
 plt.close()
